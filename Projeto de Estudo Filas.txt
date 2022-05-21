@@ -1,0 +1,113 @@
+#include <cstdlib>
+#include <iostream>
+#define clrscr system("cls") // Definindo o comando clrscr
+
+using namespace std;
+/*
+Filas
+Uma fila é uma estrutura de dados que admite inserção de novos elementos e remoção 
+de elementos antigos.  Mais especificamente, uma  fila (= queue)  é uma estrutura 
+sujeita à seguinte regra de operação: sempre que houver uma remoção, o elemento 
+removido é o que está na estrutura há mais tempo.
+
+Em outras palavras, o primeiro objeto a ser inserido na fila é também o primeiro
+a ser removido. Essa política é conhecida pela sigla FIFO (= First-In-First-Out). 
+*/
+
+
+
+
+int i;          // Usado no for
+int fila[10];
+int aux[10];
+
+int opcao = 1; // Menu
+int novo;      // adicionar item
+int atual;     // Para fazer a fila andar
+    
+void mostrar() {
+          clrscr;
+        cout << "#################################" << endl;
+        cout << "###### Mostrar Fila Atual #######" <<endl;
+        cout << "#################################" << endl << endl;
+     
+      for(i = 0; i < 10; i++) {
+      cout << "[ "<< fila[i] << " ]" << endl;
+      }
+      
+      cout << endl;
+  
+     }
+     
+void inserir() {
+     clrscr;
+        cout << "#################################" << endl;
+        cout << "## Adicionar elemento da Fila ###" <<endl;
+        cout << "#################################" << endl << endl;
+     
+     cout << "Digite o elemento: ";
+     cin >> novo ;
+     fila[atual] = novo;
+     
+     cout << endl << endl;
+     
+/* Adiciona os elementos na ordem - ao chegar no ultimo zera novamente */
+     
+     if (atual < 9) { atual++; }
+        else { atual = 0; }
+     }
+     
+/* Retirar um elemento da fila */
+
+void retirar() {
+     /* Tirar o primeiro elemento */
+     clrscr;
+        cout << "#################################" << endl;
+        cout << "### Retirar elemento da Fila ####" <<endl;
+        cout << "#################################" << endl << endl;
+       
+       cout << "Retirado: " << fila[0]; 
+       cout << endl << endl;
+       /* Fazendo a fila 'andar' */
+       
+       for(i=1; i<10; i++) {
+       aux[i-1] = fila[i];         
+       }
+       
+       for(i=0; i<10; i++) {
+       fila[i] = aux[i];
+       }
+                
+     }
+ 
+int main(int argc, char *argv[])
+{
+
+    
+        cout << "#################################" << endl;
+        cout << "Codigo para demostracao de  Filas" <<endl;
+        cout << "#################################" << endl << endl;
+        
+        while (opcao != 0) {
+              cout << "Escolha uma opcao:" << endl;
+              cout << "[1] - Mostrar Fila" << endl;
+              cout << "[2] - Inserir elemento na fila" << endl;
+              cout << "[3] - Retirar elemento da fila" << endl;
+              cout << "[0] - Sair" << endl;
+              cin >> opcao;
+              
+              if (opcao == 1) { mostrar(); }
+              if (opcao == 2) { inserir(); }
+              if (opcao == 3) { retirar(); }
+              }
+              
+        
+    system("PAUSE");
+    return EXIT_SUCCESS;
+    
+
+}
+
+
+
+ 
